@@ -1,0 +1,57 @@
+<!doctype html>
+<!--<html lang="en" style="overflow: hidden">-->
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="text/html" ; charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <title>介绍卡片</title>
+    <link rel="stylesheet" charset="UTF-8" type="text/css" href="css/message.css">
+</head>
+<body>
+<!--    <h3 class="center">This<br>is<br>our<br>group</h3>-->
+    <div class="loading">This&nbsp;&nbsp;&nbsp;is&nbsp;&nbsp;&nbsp;our&nbsp;&nbsp;&nbsp;Group</div>
+    <div class="cards">
+        <div class="card">
+            <div class="photo"><img src="src/headPortrait/sc.png" alt=""></div>
+            <h1>宋晨</h1>
+            <h2>“宋”</h2>
+            <p>编程高手，师从王明军老师，具有多个项目组经历，阅历丰厚</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="card">
+            <div class="photo"><img src="src/headPortrait/wzy.png" alt=""></div>
+            <h1>王梓悦</h1>
+            <h2>“王”</h2>
+            <p>菜鸡一枚，参加不少项目却常常半途而废，没学到真东西而常常焦虑</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="card">
+            <div class="photo"><img src="src/headPortrait/ly.png" alt=""></div>
+            <h1>刘缘</h1>
+            <h2>“刘”</h2>
+            <p>制图班的大佬，敢于挑战自我，每天都很开心，纯纯现充</p>
+            <a href="#">了解更多</a>
+        </div>
+        <div class="card">
+            <div class="photo"><img src="src/headPortrait/zpp.png" alt=""></div>
+            <h1>周培沛</h1>
+            <h2>“周”</h2>
+            <p>计算机学院双学位修习者，不是在学习就是在学习的路上，大学生活异常丰富</p>
+            <a href="#">了解更多</a>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    let loading = document.querySelector(".loading");
+    let letters = loading.textContent.split("");
+    loading.textContent = "";
+    letters.forEach((letter, i) => {
+        let span = document.createElement("span");
+        span.textContent = letter;
+        span.style.animationDelay = `${i / 10}s`;
+        loading.append(span);
+    });
+</script>

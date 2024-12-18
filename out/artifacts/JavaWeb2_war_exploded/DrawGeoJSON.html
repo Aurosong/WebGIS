@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="../../css/ol.css" rel="stylesheet" type="text/css" />
+    <script src="Scripts/ol.js" type="text/javascript"></script>
+    <script src="Scripts/jquery-3.6.0.min.js"></script>
+
+
+</head>
+
+<body>
+    <div id="map"></div>
+    <button onclick="showJSON()"> Show Json</button>
+    <script>
+        var defineMetroStyle = function (feature, resolution) {
+            var metroStyle = null;
+            metroStyle = new ol.style.Style
+        }
+        var projection = new ol.proj.Projection({
+            code: 'EPSG:4326',
+            units: 'degrees',
+            axisOrientation: 'neu',
+            global: true
+        });
+
+        var WuhanSrc = new ol.source.TileWMS({
+            url: "http://localhost:8080/geoserver/WuhanDEMO/wms",
+            params: {
+                "LAYERS": 'WuhanDEMO:metro4326',
+            }
+        });
+        var WuhanLayer = new ol.layer.Tile({
+            name: "武汉简图",
+            source: WuhanSrc
+        });
+        var map = new ol.Map({
+            target: "map",
+            layers: [
+                new ol.layer.Tile({
+                    name: "OSM底图",
+                    source: new ol.source.OSM(),
+                }),
+                WuhanLayer
+            ],
+            view: new ol.View({
+                center: [114, 30.6],
+                projection: projection,
+                zoom: 9
+            }),
+            controls: ol.control.defaults().extend([
+                new ol.control.FullScreen(),  //加载全屏显示控件（目前支持非IE内核浏览器）
+                new ol.control.ScaleLine(),
+            ])
+        });
+        // 添加结果显示图层
+        var drawSource = new ol.source.Vector({
+            format: new ol.format.GeoJSON(),
+            wrapX: false
+        });
+        var drawLayer = new ol.layer.Vector({
+            name: "绘制图层",
+            source: drawSource,
+            style: new ol.style.Style({
+                stroke: new ol.style.Stroke({
+                    color: "#FF0000",
+                    width: 3
+                })
+            })
+        });
+        map.addLayer(drawLayer);
+
+    </script>
+
+    <script>
+        function showJSON() {
+            var jsonData = '{"type":"MultiLineString","coordinates' +
+                '":[[[114.278574795,30.679362977],[114.273459583,30.672016838]'+
+                ',[114.27501892,30.655122093],[114.275645598,30.642443051]' +
+                ',[114.281583311,30.627839347],[114.291563813,30.620425398]' +
+                ',[114.301932481,30.610825135],[114.329944249,30.593969819]' +
+                ',[114.340213468,30.590696911],[114.345570641,30.586710847]' +
+                ',[114.356111207,30.579343387],[114.365065611,30.577032773]]]}';
+            var metroLine = drawSource.getFormat().readFeatures(jsonData);
+            console.log("Json got!");
+            drawSource.addFeatures(metroLine);
+            console.log("Json Drew!");
+        }
+    </script>
+
+</body>
+
+</html>

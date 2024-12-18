@@ -1,0 +1,87 @@
+#headTitle{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+#select{
+    position: absolute;
+    float: right;
+    right: 60px;
+    top: 90px;
+}
+#resultMsg{
+    border: 1px solid #444747;
+    height: 350px;
+}
+#resultMsgPassage{
+    font-size: 10px;
+}
+#map {
+    /*height: 600px;*/
+    height: 600px;
+    width: 80%;
+    position: absolute;
+    bottom: 40px;
+}
+#LoginMessage{
+    position: absolute;
+    float: right;
+    right: 300px;
+    font-size: 10px;
+    top:60px;
+}
+/*.map .layerControl {*/
+.layerControl {
+    position: absolute;
+    bottom: 5px;
+    width: 260px;
+    height: 200px;
+    /*min-width: 200px;*/
+    /*max-height: 200px;*/
+    right: 18px;
+    top: 490px;
+    opacity: 0.8;
+    /*在地图容器中的层，要设置z-index的值让其显示在地图上层*/
+    z-index: 9999;
+    color: #ffffff;
+    background-color: #4c4e5a;
+    /*边缘的宽度*/
+    border-width: 10px;
+    /*圆角的大小 */
+    border-radius: 10px;
+    /*边框颜色*/
+    border-color: #000 #000 #000 #000;
+}
+.layerControl .title {
+    font-weight: bold;
+    font-size: 15px;
+    margin: 10px;
+}
+.layerTree li {
+    list-style: none;
+    margin: 5px 10px;
+}
+
+#mouse-position{
+    float:right;
+    position: absolute;
+    color: crimson;
+    width: 240px;
+    top: 95px;
+    right: 350px;
+    z-index: 9999;
+}
+#scale{
+    float:left;
+    position: absolute;
+    z-index: 9999;
+    bottom: 40px;
+    left: -80px;
+}
+#overview-map{
+    float:left;
+    position: absolute;
+    z-index: 9999;
+    bottom:70px;
+    left:10px;
+}
